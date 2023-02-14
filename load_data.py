@@ -1,6 +1,8 @@
 import pandas as pd 
 from pandas_datareader import data
 import numpy as np
+from sklearn.model_selection import train_test_split
+
 
 def load_financial_data(start_date, end_date, output_file):
     try:
@@ -13,10 +15,11 @@ def load_financial_data(start_date, end_date, output_file):
     
     return df
 
-goog_data = load_financial_data(start_date='2008-01-01', end_date='2018-01-01', output_file='goog_data_large.pkl')
+#goog_data = load_financial_data(start_date='2008-01-01', end_date='2018-01-01', output_file='goog_data_large.pkl')
 
 
 def create_classification_trading_condition(df):
+    print(df)
     df['Open-Close'] = df.Open - df.Close
     df['High-Low'] = df.High - df.Low
     df = df.dropna()
@@ -33,3 +36,11 @@ def create_regression_trading_condition(df):
     Y = df['Close'].shift(-1) - df['Close']
     
     return (X, Y)
+
+mara_df = load_financial_data(start_date='2008-01-01', end_date='2018-01-01', output_file='mara_data.pkl')
+test = create_classification_trading_condition(df = mara_df)
+
+
+#Partitioning the data set 
+def create_train_split_group(X, Y, split_ratio = 0.8):
+    return train_test_split(X, Y, shuffle=False, train_size=split_ratio)

@@ -108,3 +108,12 @@ async def on_trade_updates(conn, channel, trade):
 	if trade.order['order_type'] != 'market' and trade.order['filled_qty'] == '100':
 		# trade closed - look for new trade
 		trade_params = set_trade_params(candlesticks.df.AAPL)
+
+# call for inital 10 bars of histroical data
+candlesticks = api.get_barset('AAPL', 'minute', limit=10)
+
+# set trade params
+trade_params = set_trade_params(candlesticks.df.AAPL)
+
+
+conn.run(['AM.AAPL', 'trade_updates'])

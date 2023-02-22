@@ -6,7 +6,7 @@ import threading
 api_key = 'insert api'
 api_secret = 'insert api secret'
 base_url = 'httsps://paper-api.alpaca.markets' #check to make sure this is correct
-
+data_url = 'wss://data.alpaca.markets'
 
 
 # instantiate REST API

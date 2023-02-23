@@ -10,7 +10,7 @@ def load_financial_data(start_date, end_date, output_file):
         print('File data found...reading GOOG data')
     except FileNotFoundError:
         print('File not found...downloading the GOOG data')
-        df = data.DataReader('GOOG', 'iex', start_date, end_date, api_key='sk_67c6cb84001f45aabe2e546b69a558cb')
+        df = data.DataReader('GOOG', 'iex', start_date, end_date, api_key='')
         df.to_pickle(output_file)
     
     return df

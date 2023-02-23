@@ -30,7 +30,7 @@ appl = api.gt_barset('AAPL', '1Min')
 ws_url = 'wss://data.alpaca.markets'
 
 conn = tradeapi.stream2.SteramConn(api_key, api_secret, base_url, data_url=ws_url, data_stream=
-alpacadatav1')
+alpacadatav2')
 
 
 
